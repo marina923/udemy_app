@@ -27,11 +27,13 @@ class _homeLayoutState extends State<homeLayout> {
   var scaffoldkey = GlobalKey<ScaffoldState>();
   Database dataBase;
   bool isBottomShowing = false;
-  IconData iconFla = Icons.add;
+  IconData iconFla = Icons.edit;
   var titlecontroller = TextEditingController();
   var timecontroller = TextEditingController();
   var datecontroller = TextEditingController();
-  var formkey = GlobalKey<FormFieldState>();
+  //var formkey = GlobalKey<FormFieldState>();
+  // المفروض تبقي <FormState> مش >FormFieldState> زي م انتي عامله فوق
+  var formkey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -55,28 +57,35 @@ class _homeLayoutState extends State<homeLayout> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          insertToDatabase();
+          // شيلت الجزء اللي تحت اللي عامل عليه الكومنت
+          // insertToDatabase(
+          //   date: datecontroller.text,
+          //   time: timecontroller.text,
+          //   title: titlecontroller.text,
+          // );
           if (isBottomShowing) {
             if (formkey.currentState.validate()) {
               insertToDatabase(
+                // مكنتيش ضايفه ال title و time و date
                 title: titlecontroller.text,
                 time: timecontroller.text,
                 date: datecontroller.text,
               ).then((value) {
                 getDataFromDB(dataBase).then((value) {
-                  Navigator.pop(context);
                   setState(() {
                     isBottomShowing = false;
-                    iconFla = Icons.add;
+                    //شيلت السطر اللي تحت ده
+                    //iconFla = Icons.edit;
                     tasks = value;
                     print(tasks);
                   });
                 });
               });
+              Navigator.pop(context);
             }
           } else {
             setState(() {
-              iconFla = Icons.edit;
+              iconFla = Icons.add;
             });
             scaffoldkey.currentState
                 .showBottomSheet(
@@ -235,7 +244,7 @@ class _homeLayoutState extends State<homeLayout> {
     return await dataBase.transaction((txn) {
       txn
           .rawInsert(
-              'INSERT INTO tasks(title, date, time, status) VALUES ("$title","$date","$time","5678gh") ')
+              'INSERT INTO tasks(title, date, time, status) VALUES ("$title","$date","$time","new") ')
           .then((value) {
         print("$value inserted succesfully");
       }).catchError((error) {
