@@ -1,4 +1,6 @@
+import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:udemy_app/shared/cubit/cubit.dart';
 
 Widget defaultButton({
   double width = double.infinity,
@@ -56,37 +58,107 @@ Widget defaultTextFormField({
       ),
       validator: validate,
     );
-Widget buildTaskItem(Map model) => Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Row(
-        children: [
-          CircleAvatar(
-            radius: 40.0,
-            child: Text('${model['time']}'),
-          ),
-          SizedBox(
-            width: 20.0,
-          ),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '${model['title']}',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18.0,
-                ),
+Widget buildTaskItem(Map model, context) => Dismissible(
+      key: Key(model['id'].toString()),
+      onDismissed: (direction) {
+        appCubit.get(context).deleteDatabase(id: model['id']);
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Row(
+          children: [
+            CircleAvatar(
+              radius: 40.0,
+              child: Text('${model['time']}'),
+            ),
+            SizedBox(
+              width: 20.0,
+            ),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '${model['title']}',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.0,
+                    ),
+                  ),
+                  Text(
+                    '${model['date']}',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 18.0,
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                '${model['date']}',
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 18.0,
-                ),
-              ),
-            ],
-          ),
-        ],
+            ),
+            SizedBox(
+              width: 20.0,
+            ),
+            IconButton(
+                onPressed: () {
+                  appCubit
+                      .get(context)
+                      .updateDatabase(status: 'done', id: model['id']);
+                },
+                icon: Icon(
+                  Icons.check_box_sharp,
+                  color: Colors.green,
+                )),
+            SizedBox(
+              width: 1.0,
+            ),
+            IconButton(
+                onPressed: () {
+                  appCubit
+                      .get(context)
+                      .updateDatabase(status: 'archive', id: model['id']);
+                },
+                icon: Icon(
+                  Icons.archive_outlined,
+                  color: Colors.black45,
+                )),
+          ],
+        ),
       ),
+    );
+Widget buildCondition({@required List<Map> tasks}) => ConditionalBuilder(
+      fallback: (context) => Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.menu,
+              color: Colors.black45,
+              size: 100.0,
+            ),
+            Text(
+              'No Tasks Yet, Please Add Some Tasks',
+              style: TextStyle(
+                color: Colors.black45,
+                fontWeight: FontWeight.bold,
+                fontSize: 16.0,
+              ),
+            ),
+          ],
+        ),
+      ),
+      condition: tasks.length > 0,
+      builder: (context) => ListView.separated(
+          itemBuilder: (context, index) => buildTaskItem(tasks[index], context),
+          separatorBuilder: (context, index) => Padding(
+                padding: const EdgeInsetsDirectional.only(
+                  start: 20.0,
+                ),
+                child: Container(
+                  width: double.infinity,
+                  height: 1.0,
+                  color: Colors.grey[300],
+                ),
+              ),
+          itemCount: tasks.length),
     );
