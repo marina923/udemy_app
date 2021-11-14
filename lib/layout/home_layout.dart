@@ -46,12 +46,6 @@ class homeLayout extends StatelessWidget {
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () {
-// شيلت الجزء اللي تحت اللي عامل عليه الكومنت
-// insertToDatabase(
-//   date: datecontroller.text,
-//   time: timecontroller.text,
-//   title: titlecontroller.text,
-// );
                 if (cubit.isBottomShowing) {
                   if (formkey.currentState.validate()) {
                     cubit.insertToDatabase(
@@ -77,9 +71,7 @@ class homeLayout extends StatelessWidget {
                   }
                   //);
                   //  Navigator.pop(context);
-                }
-                //}
-                else {
+                } else {
 // setState(() {
 //   iconFla = Icons.add;
 // });
@@ -142,7 +134,7 @@ class homeLayout extends StatelessWidget {
                                         context: context,
                                         initialDate: DateTime.now(),
                                         firstDate: DateTime.now(),
-                                        lastDate: DateTime.parse('2021-11-11'),
+                                        lastDate: DateTime.parse('2029-12-31'),
                                       ).then((value) {
                                         datecontroller.text =
                                             DateFormat.yMMMd().format(value);

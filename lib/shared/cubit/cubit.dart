@@ -33,9 +33,9 @@ class appCubit extends Cubit<appStates> {
   void createDatabase() {
     openDatabase('ToDo.db', //اسم database
         version: 1, //بعمل كام table
-        onCreate: (dataBase, version) {
+        onCreate: (dataBase, version) async {
       print("DataBase created"); //create database
-      dataBase
+      await dataBase
           .execute(
               'CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT, date TEXT, time TEXT, status TEXT)')
           //ببعت اسم table و ببعت اسماء entitys و datatype بتاعتها
