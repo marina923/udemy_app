@@ -74,7 +74,7 @@ class appCubit extends Cubit<appStates> {
   }
 
   void getDataFromDB(database) {
-    emit(appchangetaskstatusstate());
+    //emit(appchangetaskstatusstate());
     newtasks = [];
     donetasks = [];
     archivedtasks = [];
@@ -92,17 +92,16 @@ class appCubit extends Cubit<appStates> {
     });
   }
 
-  void updateDatabase({@required String status, @required int id}) async {
-    await database.rawUpdate('UPDATE tasks SET status = ?, WHERE id = ?',
-        ['updated status', id]).then((value) {
+  void updateDatabase({@required String status, @required int id}) {
+    database.rawUpdate('UPDATE tasks SET status = ?, WHERE id = ?',
+        ['$status', id]).then((value) {
       getDataFromDB(database);
       emit(appupdateDatabase());
     });
   }
 
-  void deleteDatabase({@required int id}) async {
-    await database
-        .rawDelete('DELETE FROM tasks WHERE id = ?', ['id']).then((value) {
+  void deleteDatabase({@required int id}) {
+    database.rawDelete('DELETE FROM tasks WHERE id = ?', ['$id']).then((value) {
       getDataFromDB(database);
       emit(appdeleteDatabase());
     });

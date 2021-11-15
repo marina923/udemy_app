@@ -33,7 +33,13 @@ class homeLayout extends StatelessWidget {
 
           return Scaffold(
             key: scaffoldkey,
-            body: cubit.screens[cubit.currentIndex],
+            body: ConditionalBuilder(
+              condition: state is! appgetDatabaseLoading,
+              fallback: (context) => Center(
+                child: CircularProgressIndicator(),
+              ),
+              builder: (context) => cubit.screens[cubit.currentIndex],
+            ),
 // ConditionalBuilder(
 //   condition: tasks.length > 0,
 //   builder: (context) => Center(
@@ -186,7 +192,7 @@ class homeLayout extends StatelessWidget {
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.menu),
-                  label: 'Taks',
+                  label: 'Tasks',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.check_circle_outline_outlined),
