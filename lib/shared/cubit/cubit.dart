@@ -23,7 +23,7 @@ class appCubit extends Cubit<appStates> {
     emit(appChangeBottomNavBar());
   }
 
-  Database dataBase;
+  Database database;
   List<Map> newtasks = [];
   List<Map> donetasks = [];
   List<Map> archivedtasks = [];
@@ -33,9 +33,9 @@ class appCubit extends Cubit<appStates> {
   void createDatabase() {
     openDatabase('ToDo.db', //اسم database
         version: 1, //بعمل كام table
-        onCreate: (dataBase, version) async {
+        onCreate: (database, version) async {
       print("DataBase created"); //create database
-      await dataBase
+      await database
           .execute(
               'CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT, date TEXT, time TEXT, status TEXT)')
           //ببعت اسم table و ببعت اسماء entitys و datatype بتاعتها
@@ -44,10 +44,13 @@ class appCubit extends Cubit<appStates> {
       }).catchError((error) {
         print("error when creating table ${error.toString()}");
       });
-    }, onOpen: (dataBase) {
-      getDataFromDB(dataBase);
+    }, onOpen: (database) {
+      getDataFromDB(database);
       //open database
       print("database opened");
+    }).then((value) {
+      database = value;
+      emit(appcreateDatabase());
     });
   }
 
@@ -56,51 +59,51 @@ class appCubit extends Cubit<appStates> {
     @required String date,
     @required String time,
   }) async {
-    return dataBase.transaction((txn) async {
+    return database.transaction((txn) async {
       txn
           .rawInsert(
               'INSERT INTO tasks(title, date, time, status) VALUES ("$title","$date","$time","new") ')
           .then((value) {
+        print("$value inserted successfully");
         emit(appinsertDatabase());
-        getDataFromDB(dataBase);
-        print("$value inserted succesfully");
+        getDataFromDB(database);
       }).catchError((error) {
         print('error on creating new record ${error.toString()}');
       });
     });
   }
 
-  void getDataFromDB(dataBase) {
+  void getDataFromDB(database) {
     emit(appchangetaskstatusstate());
     newtasks = [];
     donetasks = [];
     archivedtasks = [];
     emit(appgetDatabaseLoading());
-    dataBase.rawQuery('SELECT * FROM tasks').then((value) {
+    database.rawQuery('SELECT * FROM tasks').then((value) {
       value.forEach((element) {
-        emit(appgetDatabase());
-        if (element['status'] == 'New Tasks')
+        if (element['status'] == 'new')
           newtasks.add(element);
-        else if (element['status'] == 'Done Tasks')
+        else if (element['status'] == 'done')
           donetasks.add(element);
         else
           archivedtasks.add(element);
       });
+      emit(appgetDatabase());
     });
   }
 
   void updateDatabase({@required String status, @required int id}) async {
-    await dataBase.rawUpdate('UPDATE tasks SET status = ?, WHERE id = ?',
+    await database.rawUpdate('UPDATE tasks SET status = ?, WHERE id = ?',
         ['updated status', id]).then((value) {
-      getDataFromDB(dataBase);
+      getDataFromDB(database);
       emit(appupdateDatabase());
     });
   }
 
   void deleteDatabase({@required int id}) async {
-    await dataBase
+    await database
         .rawDelete('DELETE FROM tasks WHERE id = ?', ['id']).then((value) {
-      getDataFromDB(dataBase);
+      getDataFromDB(database);
       emit(appdeleteDatabase());
     });
   }
