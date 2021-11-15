@@ -34,7 +34,7 @@ class homeLayout extends StatelessWidget {
           return Scaffold(
             key: scaffoldkey,
             body: ConditionalBuilder(
-              condition: state is! appgetDatabaseLoading,
+              condition: state is! appchangetaskstatusstate,
               fallback: (context) => Center(
                 child: CircularProgressIndicator(),
               ),
@@ -48,7 +48,9 @@ class homeLayout extends StatelessWidget {
 //   fallback: (context) => screens[currentIndex],
 // ),
             appBar: AppBar(
-              title: Text(cubit.titles[cubit.currentIndex]),
+              title: Text(
+                cubit.titles[cubit.currentIndex],
+              ),
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () {
@@ -81,6 +83,7 @@ class homeLayout extends StatelessWidget {
 // setState(() {
 //   iconFla = Icons.add;
 // });
+                  cubit.iconFla = Icons.add;
                   scaffoldkey.currentState
                       .showBottomSheet(
                         (context) => Container(
@@ -92,40 +95,42 @@ class homeLayout extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 defaultTextFormField(
-                                    controller: titlecontroller,
-                                    label: 'title task',
-                                    prefix: Icons.title,
-                                    type: TextInputType.text,
-                                    validate: (String value) {
-                                      if (value.isEmpty) {
-                                        return 'title must not be empty';
-                                      }
-                                      return null;
-                                    }),
+                                  controller: titlecontroller,
+                                  label: 'title task',
+                                  prefix: Icons.title,
+                                  type: TextInputType.text,
+                                  validate: (String value) {
+                                    if (value.isEmpty) {
+                                      return 'title must not be empty';
+                                    }
+                                    return null;
+                                  },
+                                ),
                                 SizedBox(
                                   height: 20.0,
                                 ),
                                 defaultTextFormField(
-                                    controller: timecontroller,
-                                    label: 'time task',
-                                    prefix: Icons.watch_later_outlined,
-                                    type: TextInputType.datetime,
+                                  controller: timecontroller,
+                                  label: 'time task',
+                                  prefix: Icons.watch_later_outlined,
+                                  type: TextInputType.datetime,
 // isClickable: false,
-                                    tap: () {
-                                      showTimePicker(
-                                        context: context,
-                                        initialTime: TimeOfDay.now(),
-                                      ).then((value) {
-                                        timecontroller.text =
-                                            value.format(context).toString();
-                                      });
-                                    },
-                                    validate: (String value) {
-                                      if (value.isEmpty) {
-                                        return 'title must not be empty';
-                                      }
-                                      return null;
-                                    }),
+                                  tap: () {
+                                    showTimePicker(
+                                      context: context,
+                                      initialTime: TimeOfDay.now(),
+                                    ).then((value) {
+                                      timecontroller.text =
+                                          value.format(context).toString();
+                                    });
+                                  },
+                                  validate: (String value) {
+                                    if (value.isEmpty) {
+                                      return 'title must not be empty';
+                                    }
+                                    return null;
+                                  },
+                                ),
                                 SizedBox(
                                   height: 20.0,
                                 ),
@@ -208,9 +213,5 @@ class homeLayout extends StatelessWidget {
         },
       ),
     );
-  }
-
-  Future<String> getName() async {
-    return "marina salah";
   }
 }

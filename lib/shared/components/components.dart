@@ -58,6 +58,7 @@ Widget defaultTextFormField({
       ),
       validator: validate,
     );
+
 Widget buildTaskItem(Map model, context) => Dismissible(
       key: Key(model['id'].toString()),
       onDismissed: (direction) {
@@ -100,28 +101,32 @@ Widget buildTaskItem(Map model, context) => Dismissible(
               width: 20.0,
             ),
             IconButton(
-                onPressed: () {
-                  appCubit
-                      .get(context)
-                      .updateDatabase(status: 'done', id: model['id']);
-                },
-                icon: Icon(
-                  Icons.check_box_sharp,
-                  color: Colors.green,
-                )),
+              onPressed: () {
+                appCubit.get(context).updateDatabase(
+                      status: 'done',
+                      id: model['id'],
+                    );
+              },
+              icon: Icon(
+                Icons.check_box_sharp,
+                color: Colors.green,
+              ),
+            ),
             SizedBox(
               width: 1.0,
             ),
             IconButton(
-                onPressed: () {
-                  appCubit
-                      .get(context)
-                      .updateDatabase(status: 'archive', id: model['id']);
-                },
-                icon: Icon(
-                  Icons.archive_outlined,
-                  color: Colors.black45,
-                )),
+              onPressed: () {
+                appCubit.get(context).updateDatabase(
+                      status: 'archive',
+                      id: model['id'],
+                    );
+              },
+              icon: Icon(
+                Icons.archive_outlined,
+                color: Colors.black45,
+              ),
+            ),
           ],
         ),
       ),

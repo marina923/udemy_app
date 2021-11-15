@@ -14,22 +14,22 @@ class appCubit extends Cubit<appStates> {
   int currentIndex = 0;
   List<Widget> screens = [
     newTasksScreen(),
-    archivedTasksScreen(),
     doneTasksScreen(),
+    archivedTasksScreen(),
   ];
   List<String> titles = ['New Tasks', 'Done Tasks', 'Archived Tasks'];
+  Database database;
+  List<Map> newtasks = [];
+  List<Map> donetasks = [];
+  List<Map> archivedtasks = [];
+  bool isBottomShowing = false;
+  IconData iconFla = Icons.edit;
+
   void changeIndex(int index) {
     currentIndex = index;
     emit(appChangeBottomNavBar());
   }
 
-  Database database;
-  List<Map> newtasks = [];
-  List<Map> donetasks = [];
-  List<Map> archivedtasks = [];
-
-  bool isBottomShowing = false;
-  IconData iconFla = Icons.edit;
   void createDatabase() {
     openDatabase('ToDo.db', //اسم database
         version: 1, //بعمل كام table
@@ -74,7 +74,7 @@ class appCubit extends Cubit<appStates> {
   }
 
   void getDataFromDB(database) {
-    //emit(appchangetaskstatusstate());
+    emit(appchangetaskstatusstate());
     newtasks = [];
     donetasks = [];
     archivedtasks = [];
@@ -93,7 +93,7 @@ class appCubit extends Cubit<appStates> {
   }
 
   void updateDatabase({@required String status, @required int id}) {
-    database.rawUpdate('UPDATE tasks SET status = ?, WHERE id = ?',
+    database.rawUpdate('UPDATE tasks SET status = ? WHERE id = ?',
         ['$status', id]).then((value) {
       getDataFromDB(database);
       emit(appupdateDatabase());
