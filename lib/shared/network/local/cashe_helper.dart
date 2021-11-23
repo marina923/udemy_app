@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class CasheHelper {
   static SharedPreferences sharedPreferences;
-  static void init() async {
+  static init() async {
     sharedPreferences = await SharedPreferences.getInstance();
   }
 
