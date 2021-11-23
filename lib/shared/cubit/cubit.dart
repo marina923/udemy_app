@@ -19,9 +19,9 @@ class appCubit extends Cubit<appStates> {
   ];
   List<String> titles = ['New Tasks', 'Done Tasks', 'Archived Tasks'];
   Database database;
-  List<Map> newtasks = [];
-  List<Map> donetasks = [];
-  List<Map> archivedtasks = [];
+  List<Map> newTasks = [];
+  List<Map> doneTasks = [];
+  List<Map> archiveTasks = [];
   bool isBottomShowing = false;
   IconData iconFla = Icons.edit;
 
@@ -31,65 +31,120 @@ class appCubit extends Cubit<appStates> {
   }
 
   void createDatabase() {
-    openDatabase('ToDo.db', //اسم database
-        version: 1, //بعمل كام table
-        onCreate: (database, version) async {
-      print("DataBase created"); //create database
-      await database
-          .execute(
-              'CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT, date TEXT, time TEXT, status TEXT)')
-          //ببعت اسم table و ببعت اسماء entitys و datatype بتاعتها
-          .then((value) {
-        print("table created"); //create table
-      }).catchError((error) {
-        print("error when creating table ${error.toString()}");
-      });
-    }, onOpen: (database) {
-      getDataFromDB(database);
-      //open database
-      print("database opened");
-    }).then((value) {
+    openDatabase(
+      'todo.db',
+      version: 1,
+      onCreate: (database, version) async {
+        print('database created');
+        await database
+            .execute(
+                'CREATE TABLE tasks(id INTEGER PRIMARY KEY, title TEXT, time TEXT, date TEXT, status TEXT)')
+            .then((value) {
+          print('table created');
+        }).catchError((error) {
+          print('Error in creating table ${error.toString()}');
+        });
+      },
+      onOpen: (database) {
+        getDataFromDB(database);
+      },
+    ).then((value) {
       database = value;
       emit(appcreateDatabase());
     });
+    // openDatabase('ToDo.db', //اسم database
+    //     version: 1, //بعمل كام table
+    //     onCreate: (database, version) async {
+    //   print("DataBase created"); //create database
+    //   await database
+    //       .execute(
+    //           'CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT, date TEXT, time TEXT, status TEXT)')
+    //       //ببعت اسم table و ببعت اسماء entitys و datatype بتاعتها
+    //       .then((value) {
+    //     print("table created"); //create table
+    //   }).catchError((error) {
+    //     print("error when creating table ${error.toString()}");
+    //   });
+    // }, onOpen: (database) {
+    //   getDataFromDB(database);
+    //   //open database
+    //   print("database opened");
+    // }).then((value) {
+    //   database = value;
+    //   emit(appcreateDatabase());
+    // });
   }
 
   insertToDatabase({
     @required String title,
-    @required String date,
     @required String time,
+    @required String date,
   }) async {
     return database.transaction((txn) async {
       txn
           .rawInsert(
-              'INSERT INTO tasks(title, date, time, status) VALUES ("$title","$date","$time","new") ')
+              'INSERT INTO tasks (title, time, date, status) VALUES("$title","$time","$date","New")')
           .then((value) {
-        print("$value inserted successfully");
+        print('$value inserted successfully');
         emit(appinsertDatabase());
         getDataFromDB(database);
       }).catchError((error) {
-        print('error on creating new record ${error.toString()}');
+        print('Error in creating table ${error.toString()}');
       });
     });
+    //{
+    //   @required String title,
+    //   @required String date,
+    //   @required String time,
+    // }) async {
+    //   return database.transaction((txn) async {
+    //     txn
+    //         .rawInsert(
+    //             'INSERT INTO tasks(title, date, time, status) VALUES ("$title","$date","$time","new") ')
+    //         .then((value) {
+    //       print("$value inserted successfully");
+    //       emit(appinsertDatabase());
+    //       getDataFromDB(database);
+    //     }).catchError((error) {
+    //       print('error on creating new record ${error.toString()}');
+    //     });
+    //   });
   }
 
-  void getDataFromDB(database) {
-    emit(appchangetaskstatusstate());
-    newtasks = [];
-    donetasks = [];
-    archivedtasks = [];
+  void getDataFromDB(database) async {
+    newTasks = [];
+    doneTasks = [];
+    archiveTasks = [];
     emit(appgetDatabaseLoading());
-    database.rawQuery('SELECT * FROM tasks').then((value) {
-      value.forEach((element) {
-        if (element['status'] == 'new')
-          newtasks.add(element);
-        else if (element['status'] == 'done')
-          donetasks.add(element);
-        else
-          archivedtasks.add(element);
-      });
-      emit(appgetDatabase());
-    });
+    database.rawQuery('SELECT * FROM tasks').then(
+      (value) {
+        value.forEach((element) {
+          if (element['status'] == 'New')
+            newTasks.add(element);
+          else if (element['status'] == 'done')
+            doneTasks.add(element);
+          else
+            archiveTasks.add(element);
+        });
+        emit(appgetDatabase());
+      },
+    );
+    // emit(appchangetaskstatusstate());
+    // newtasks = [];
+    // donetasks = [];
+    // archivedtasks = [];
+    // emit(appgetDatabaseLoading());
+    // database.rawQuery('SELECT * FROM tasks').then((value) {
+    //   value.forEach((element) {
+    //     if (element['status'] == 'new')
+    //       newtasks.add(element);
+    //     else if (element['status'] == 'done')
+    //       donetasks.add(element);
+    //     else
+    //       archivedtasks.add(element);
+    //   });
+    //   emit(appgetDatabase());
+    // });
   }
 
   void updateDatabase({@required String status, @required int id}) {
@@ -100,12 +155,20 @@ class appCubit extends Cubit<appStates> {
     });
   }
 
-  void deleteDatabase({@required int id}) {
-    database.rawDelete('DELETE FROM tasks WHERE id = ?', ['$id']).then((value) {
+  void deleteDatabase({
+    @required int id,
+  }) {
+    database.rawDelete('DELETE FROM tasks WHERE id = ?', [id]).then((value) {
       getDataFromDB(database);
       emit(appdeleteDatabase());
     });
   }
+  //   {@required int id}) {
+  // database.rawDelete('DELETE FROM tasks WHERE id = ?', [id]).then((value) {
+  //   print(newTasks);
+  //   getDataFromDB(database);
+  //   emit(appdeleteDatabase());
+  // });
 
   void bottomSheetChangeState(
       {@required bool isShow, @required IconData icon}) {

@@ -3,19 +3,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-
 import 'package:udemy_app/shared/components/components.dart';
 import 'package:udemy_app/shared/cubit/cubit.dart';
 import 'package:udemy_app/shared/cubit/states.dart';
 
 class homeLayout extends StatelessWidget {
   var scaffoldkey = GlobalKey<ScaffoldState>();
-
   var titlecontroller = TextEditingController();
   var timecontroller = TextEditingController();
   var datecontroller = TextEditingController();
   //var formkey = GlobalKey<FormFieldState>();
-  // المفروض تبقي <FormState> مش >FormFieldState> زي م انتي عامله فوق
+  // المفروض تبقي <FormStatel;> مش >FormFieldState> زي م انتي عامله فوق
   var formkey = GlobalKey<FormState>();
 
   @override
@@ -30,11 +28,10 @@ class homeLayout extends StatelessWidget {
         },
         builder: (BuildContext context, appStates state) {
           appCubit cubit = appCubit.get(context);
-
           return Scaffold(
             key: scaffoldkey,
             body: ConditionalBuilder(
-              condition: state is! appchangetaskstatusstate,
+              condition: state is! appgetDatabaseLoading,
               fallback: (context) => Center(
                 child: CircularProgressIndicator(),
               ),

@@ -9,7 +9,7 @@ import 'package:udemy_app/shared/cubit/states.dart';
 class newTasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var tasks = appCubit.get(context).newtasks;
+    var tasks = appCubit.get(context).newTasks;
     return BlocConsumer<appCubit, appStates>(
         builder: (context, state) {
           return buildCondition(tasks: tasks);

@@ -7,7 +7,7 @@ import 'package:udemy_app/shared/cubit/states.dart';
 class archivedTasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var tasks = appCubit.get(context).archivedtasks;
+    var tasks = appCubit.get(context).archiveTasks;
     return BlocConsumer<appCubit, appStates>(
         builder: (context, state) {
           return buildCondition(tasks: tasks);

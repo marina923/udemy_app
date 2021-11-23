@@ -1,0 +1,202 @@
+
+{
+  "status": "ok",
+"totalResults": 70,
+"articles":
+[
+{
+"source": {
+"id": "fox-news",
+"name": "Fox News"
+},
+"author": "Cortney Moore",
+"title": "4 smart tips for Thanksgiving travel - Fox News",
+"description": "While Thanksgiving travel outlook hasn’t eclipsed pre-pandemic levels, tens of millions of Americans will travel to see family and friends.",
+"url": "https://www.foxnews.com/lifestyle/smart-tips-thanksgiving-travel",
+"urlToImage": "https://static.foxnews.com/foxnews.com/content/uploads/2019/02/AP19035691547302.jpg",
+"publishedAt": "2021-11-18T21:27:19Z",
+"content": "While Thanksgiving travel outlook hasnt eclipsed pre-pandemic levels, tens of millions of Americans will travel to see family and friends.\r\nThe American Automobile Association (AAA) anticipates 4.2 m… [+4856 chars]"
+},
+{
+"source": {
+"id": "cnn",
+"name": "CNN"
+},
+"author": "Danielle Wiener-Bronner, CNN Business",
+"title": "Shares of Sweetgreen soar following Wall Street debut - CNN",
+"description": "Wall Street is hungry for fancy salads. Sweetgreen's stock nearly doubled in price mid-day Thursday, hours after the upscale salad chain made its Wall Street debut.",
+"url": "https://www.cnn.com/2021/11/18/business/sweetgreen-ipo/index.html",
+"urlToImage": "https://cdn.cnn.com/cnnnext/dam/assets/211118141624-01-sweetgreen-ipo-1118-restricted-super-tease.jpg",
+"publishedAt": "2021-11-18T21:07:00Z",
+"content": null
+},
+{
+"source": {
+"id": "cnn",
+"name": "CNN"
+},
+"author": null,
+"title": "Rupert Murdoch has a message for Trump - CNN",
+"description": "News Corp chairman Rupert Murdoch addressed shareholders and said that former President Donald Trump should move on from the 2020 election.",
+"url": "https://www.cnn.com/videos/media/2021/11/18/rupert-murdoch-trump-2020-election-fox-vpx.cnn",
+"urlToImage": "https://cdn.cnn.com/cnnnext/dam/assets/211117223314-murdoch-trump-split-super-tease.jpg",
+"publishedAt": "2021-11-18T20:56:45Z",
+"content": null
+},
+{
+"source": {
+"id": "abc-news",
+"name": "ABC News"
+},
+"author": "TOM MURPHY AP Health Writer",
+"title": "CVS Health to close hundreds of drugstores over next 3 years - ABC News",
+"description": "",
+"url": "https://abcnews.go.com/Business/wireStory/cvs-health-lays-plan-close-hundreds-drugstores-81254461",
+"urlToImage": "https://s.abcnews.com/images/Business/WireAP_dcfc06abf2fc4340924650c38a3f1300_16x9_992.jpg",
+"publishedAt": "2021-11-18T20:48:45Z",
+"content": "CVS Health will close hundreds of drugstores over the next three years, as the health care giant adjusts to changing customer needs and converts to new store formats.\r\nThe company said Thursday that … [+3743 chars]"
+},
+{
+"source": {
+"id": "the-hill",
+"name": "The Hill"
+},
+"author": "Mychael Schnell",
+"title": "Warren calls for investigation into planned Trump SPAC deal | TheHill - The Hill",
+"description": "Sen. Elizabeth Warren (D-Mass.) on Wednesday called on the Securi...",
+"url": "https://thehill.com/homenews/senate/582223-warren-calls-for-investigation-into-planned-trump-spac-deal",
+"urlToImage": "https://thehill.com/sites/default/files/warrenelizabeth_092821gn_lead.jpg",
+"publishedAt": "2021-11-18T20:37:50Z",
+"content": "Sen. Elizabeth WarrenElizabeth WarrenBill honoring 13 service members killed in Afghanistan heads to Biden's deskEquilibrium/Sustainability Presented by Southern Company COVID-19 kills snow leopards … [+3825 chars]"
+},
+{
+"source": {
+"id": "usa-today",
+"name": "USA Today"
+},
+"author": "Kelly Tyko, USA TODAY",
+"title": "Starbucks Red Cup Day 2021: How to get a free reusable cup with your holiday drink Thursday - USA TODAY",
+"description": "Starbucks is giving away free reusable red cups to customers who order holiday and fall drinks at participating U.S. stores on Thursday, Nov. 18.",
+"url": "https://www.usatoday.com/story/money/food/2021/11/17/starbucks-holiday-drinks-free-red-cup/8636740002/",
+"urlToImage": "https://www.gannett-cdn.com/presto/2021/11/17/USAT/1a97ca0f-d09b-48fb-8d64-4dcb1c8a3dd8-Starbucks_Holiday_Cups_with_Reusable_Cup_2.jpg?auto=webp&crop=2682,1509,x0,y23&format=pjpg&width=1200",
+"publishedAt": "2021-11-18T20:33:17Z",
+"content": "Set your alarms. Starbucks' highly-anticipated Red Cup Day is Thursday.\r\nThe coffee chain is giving away free limited-edition reusable red cups to customers who order a handcrafted holiday or fall be… [+2596 chars]"
+},
+{
+"source": {
+"id": null,
+"name": "Barron's"
+},
+"author": "Al Root",
+"title": "Ford Drops Semiconductor Bombshell. Adds Alliance To Boost American-Made Chips. - Barron's",
+"description": "Ford formed an alliance with chip maker to produce semiconductors in the U.S.",
+"url": "https://www.barrons.com/articles/ford-global-foundries-semiconductor-deal-51637248837",
+"urlToImage": "https://images.barrons.com/im-437426/social",
+"publishedAt": "2021-11-18T20:14:00Z",
+"content": "A global semiconductor shortage has constrained auto production all year, creating productionand stock marketvolatility for the entire automotive sector. \r\nFord Motor\r\nis taking new steps to minimize… [+3788 chars]"
+},
+{
+"source": {
+"id": null,
+"name": "Electrek"
+},
+"author": null,
+"title": "Vinfast launches two EVs, announces US HQ and manufacturing in 2024 - Electrek",
+"description": "Vietnamese EV automaker Vinfast hit the ground running at the LA Auto Show, debuting two SUVs, announcing a new HQ, and US manufacturing.",
+"url": "https://electrek.co/2021/11/18/vinfast-launches-two-evs-announces-us-hq-and-manufacturing-in-2024/",
+"urlToImage": "https://i1.wp.com/electrek.co/wp-content/uploads/sites/3/2021/11/Vinfast-Premiere.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+"publishedAt": "2021-11-18T20:02:00Z",
+"content": "Vinfast may not be an EV name you recognize yet, but there should be an emphasis on the “fast” part of its moniker. At a private event following the first day of the LA Auto Show, Vinfast’s Global CE… [+3909 chars]"
+},
+{
+"source": {
+"id": "the-wall-street-journal",
+"name": "The Wall Street Journal"
+},
+"author": "Jeff Horwitz, Georgia Wells",
+"title": "Instagram’s Effects on Children Are Being Investigated by Coalition of States - The Wall Street Journal",
+"description": "Move raises pressure on parent company Meta Platforms, formerly called Facebook, over the potential harms to its users",
+"url": "https://www.wsj.com/articles/instagram-effects-on-children-is-being-investigated-by-coalition-of-states-11637262000",
+"urlToImage": "https://images.wsj.net/im-437521/social",
+"publishedAt": "2021-11-18T19:41:00Z",
+"content": "A bipartisan coalition of state attorneys general said Thursday it is investigating how Instagram attracts and affects young people, amping up the pressure on parent company Meta Platforms Inc. over … [+295 chars]"
+},
+{
+"source": {
+"id": null,
+"name": "CNBC"
+},
+"author": "Cory Stieg",
+"title": "Bill Gates: These 2 strategies could control the Covid pandemic by summer - CNBC",
+"description": "Bill Gates says vaccines and antiviral drugs could get the Covid pandemic to a manageable point by summer 2022. Here's how.",
+"url": "https://www.cnbc.com/2021/11/18/bill-gates-covid-pandemic-will-be-manageable-by-summer-2022.html",
+"urlToImage": "https://image.cnbcfm.com/api/v1/image/106977485-1637255653060-gettyimages-1236298419-AFP_9QV7G4.jpeg?v=1637261762",
+"publishedAt": "2021-11-18T19:29:08Z",
+"content": "Bill Gates can see how the Covid pandemic becomes manageable by next summer and his roadmap is surprisingly simple.\r\nOn Wednesday, the billionaire philanthropist and Microsoft co-founder listed the t… [+3229 chars]"
+},
+{
+"source": {
+"id": null,
+"name": "Fox Business"
+},
+"author": "Cortney Moore",
+"title": "McDonald's app experiences outage in United States on Egg McMuffin promo day - Fox Business",
+"description": "McDonald’s notified its customers that it would be selling Egg McMuffins for 63 cents on Nov. 18, in honor of the menu item’s original price though the promo might have contributed to app outage",
+"url": "https://www.foxbusiness.com/lifestyle/mcdonalds-app-egg-mcmuffin-outage-downdetector",
+"urlToImage": "https://a57.foxnews.com/static.foxbusiness.com/foxbusiness.com/content/uploads/2021/08/0/0/iStock-1253052423.jpg?ve=1&tl=1",
+"publishedAt": "2021-11-18T19:27:05Z",
+"content": "McDonald’s notified its customers that it would be selling Egg McMuffins for 63 cents on Thursday, Nov. 18, in honor of the menu item’s original price.\r\nBut not everyone has been able to secure the a… [+3453 chars]"
+},
+{
+"source": {
+"id": null,
+"name": "CNBC"
+},
+"author": "Jeff Cox",
+"title": "Millions of people quit their jobs in the ‘Great Resignation.’ Here is why it may not last long - CNBC",
+"description": "More than 4.4 million people quit their jobs in September, but there’s more to the “Great Resignation” than just worker dissatisfaction.",
+"url": "https://www.cnbc.com/2021/11/18/why-the-great-resignation-may-not-last-very-long.html",
+"urlToImage": "https://image.cnbcfm.com/api/v1/image/106956922-16337100122021-10-08t161835z_467688125_rc2s5q9x25cl_rtrmadp_0_usa-economy.jpeg?v=1637263974",
+"publishedAt": "2021-11-18T19:24:44Z",
+"content": "A sign advertising job openings is seen while people walk into the store in New York, August 6, 2021.\r\nReports of the so-called Great Resignation may have been exaggerated.\r\nOver the past several mon… [+5632 chars]"
+},
+{
+"source": {
+"id": "bloomberg",
+"name": "Bloomberg"
+},
+"author": null,
+"title": "Xbox Is Evaluating Relationship With Activision - Bloomberg",
+"description": null,
+"url": "https://www.bloomberg.com/tosv2.html?vid=&uuid=ce07048d-48c2-11ec-9d24-737178425672&url=L25ld3MvYXJ0aWNsZXMvMjAyMS0xMS0xOC94Ym94LWNoaWVmLXNheXMtaGUtcy1ldmFsdWF0aW5nLXJlbGF0aW9uc2hpcC13aXRoLWFjdGl2aXNpb24=",
+"urlToImage": null,
+"publishedAt": "2021-11-18T19:24:39Z",
+"content": "To continue, please click the box below to let us know you're not a robot."
+},
+{
+"source": {
+"id": null,
+"name": "Bitcoin Magazine"
+},
+"author": "Namcios",
+"title": "Congressmen Seek To Strike Bitcoin Reporting Requirements From Infrastructure Bill - Bitcoin Magazine",
+"description": "The Keep Innovation in America Act seeks to repeal the reporting requirements of the infrastructure bill and clarify the meaning of “broker.”",
+"url": "https://bitcoinmagazine.com/markets/congressmen-seek-to-strike-bitcoin-reporting-requirements-from-infrastructure-bill",
+"urlToImage": "https://bitcoinmagazine.com/.image/t_share/MTgxNjEzNzAzNTc2MTY3Njgy/law.png",
+"publishedAt": "2021-11-18T19:24:28Z",
+"content": "Representatives Patrick McHenry (NC-10) and Tim Ryan (OH-13) have today introduced the Keep Innovation in America Act, a bipartisan bill seeking to fix the “digital asset” reporting requirements in t… [+2342 chars]"
+},
+{
+"source": {
+"id": null,
+"name": "YouTube"
+},
+"author": null,
+"title": "Analysis: Is Biden to blame for rising gas prices? - CNN",
+"description": "CNN's John Avlon examines the factors for rising oil prices and how much control the President has over it as Republicans use it as an attack against Biden.#...",
+"url": "https://www.youtube.com/watch?v=r-zVNFwCd_w",
+"urlToImage": "https://i.ytimg.com/vi/r-zVNFwCd_w/maxresdefault.jpg",
+"publishedAt": "2021-11-18T19:15:15Z",
+"content": null
+}
+]}
